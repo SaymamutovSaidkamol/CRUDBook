@@ -27,7 +27,6 @@ const Form = ({ setDate, edit, setEdit }) => {
     const fileInput = file.current.files[0];
 
     if (edit) {
-      // Agar yangi rasm bor bo'lsa
       if (fileInput) {
         const reader = new FileReader();
         reader.onloadend = () => {
@@ -39,15 +38,15 @@ const Form = ({ setDate, edit, setEdit }) => {
             stock: stock.current.value,
             ganre: ganre.current.value,
             description: description.current.value,
-            image: reader.result, // yangi rasm
+            image: reader.result,
             createdAt,
           };
 
           setDate((prev) =>
             prev.map((item) => (item.id === edit.id ? updateBook : item))
           );
-          setEdit(null); // Editni null qilish
-          clearForm(); // Formani tozalash
+          setEdit(null);
+          clearForm(); 
         };
         reader.readAsDataURL(fileInput);
       } else {
@@ -59,15 +58,15 @@ const Form = ({ setDate, edit, setEdit }) => {
           stock: stock.current.value,
           ganre: ganre.current.value,
           description: description.current.value,
-          image: edit.image, // eski rasmni saqlash
+          image: edit.image, 
           createdAt,
         };
 
         setDate((prev) =>
           prev.map((item) => (item.id === edit.id ? updateBook : item))
         );
-        setEdit(null); // Editni null qilish
-        clearForm(); // Formani tozalash
+        setEdit(null);
+        clearForm();
       }
     } else {
       if (fileInput) {
@@ -86,14 +85,13 @@ const Form = ({ setDate, edit, setEdit }) => {
           };
 
           setDate((prev) => [...prev, newBook]);
-          clearForm(); // Formani tozalash
+          clearForm();
         };
         reader.readAsDataURL(fileInput);
       }
     }
   };
 
-  // Formani tozalash funksiyasi
   const clearForm = () => {
     name.current.value = "";
     price.current.value = "";
@@ -105,7 +103,7 @@ const Form = ({ setDate, edit, setEdit }) => {
   };
 
   return (
-    <form action="" className="bg-[#eee] rounded" onSubmit={handleSubmit}>
+    <form action="" className="bg-[#eee] rounded " onSubmit={handleSubmit}>
       <div className="grid grid-cols-3 items-center gap-5 px-3 py-3">
         <input
           type="text"
