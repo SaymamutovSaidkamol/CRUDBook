@@ -12,7 +12,7 @@ const Book = () => {
   }, [data])
 
   return (
-    <div className="border p-4 flex flex-col container mx-auto mt-[200px]">
+    <div className=" p-4 flex flex-col container mx-auto mt-[200px]">
       <Form setDate={setDate} edit={edit} setEdit={setEdit}/>
       <Tables data={data} setDate={setDate} setEdit={setEdit}/>
     </div>
